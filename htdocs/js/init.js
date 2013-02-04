@@ -8,7 +8,7 @@ if (! this.todo) this.todo = {};
 
     var   client = todo.client
         , userId = 1 //TODO: Get userId from Cookies
-        , Task = Model.init();
+        , Task = Model.create();
         ;
 
       Task.attribute = ['name', 'description', 'checked'];
@@ -24,7 +24,7 @@ if (! this.todo) this.todo = {};
 
         $.when(taskAjax).done(function() {
             // renderer
-            console.log(Task);
+            $('#task-tmpl').tmpl(Task.toArray()).appendTo('#todo-inner ul');
         });
     });
 })(this.jQuery, this);

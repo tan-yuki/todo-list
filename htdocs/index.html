@@ -18,6 +18,8 @@
 			</div>
 			<div id="todo-contents" class="container">
 				<div id="todo-inner">
+					<ul id="task-list">
+					</ul>
 				</div>
 			</div>
 		</div><!-- / #container -->
@@ -59,20 +61,17 @@
 		</div><!-- / #register-user -->
 	
 		<script id="task-tmpl" type="text/x-jquery-tmpl">
-			<ul id="task-list">
-				{{each(i, task) tasks}}
-				<li class="task">
-					<div class="clearfix">
-						<div class="task-check">
-							<input type="checkbox" id="${task.id}" {{if task.checked}}checked{{/if}}>
-							<label for="${task.id}"></label>
-						</div>
-						<div class="task-contents"><input type="text" value="${task.title}" placeholder="input TODO title"></div>
+			<li class="task">
+				<div class="clearfix">
+					<div class="task-check">
+						<input type="checkbox" id="${id}" {{if checked}}checked{{/if}}>
+						<label for="${id}"></label>
 					</div>
-				</li>
-				{{/each}}
-			</ul>
+					<div class="task-contents"><input type="text" value="${title}" placeholder="input TODO title"></div>
+				</div>
+			</li>
 		</script>
+		<script type="text/javascript" src="./js/lib/less.js" charset="UTF-8"></script>
 		<script type="text/javascript" src="./js/lib/jquery.js" charset="UTF-8"></script>
 		<script type="text/javascript" src="./js/lib/jquery.cookie.js" charset="UTF-8"></script>
 		<script type="text/javascript" src="./js/lib/jquery.tmpl.min.js" charset="UTF-8"></script>
