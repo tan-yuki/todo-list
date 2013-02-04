@@ -1,0 +1,3 @@
+[submodule "htdocs/js/lib/model"]
+	path = htdocs/js/lib/model
+	url = https://github.com/tan-yuki/model.js.git
