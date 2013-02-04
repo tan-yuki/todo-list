@@ -10,6 +10,7 @@ class TaskApi {
 	 */
 	public static function get ($userId) {
 		$tasks = ORM::for_table('tasks')
+			->select('tasks.*')
 			->join('users', array('tasks.user_id', '=', 'users.id'))
 			->where('users.id',  $userId)
 			->find_array();
