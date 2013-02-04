@@ -1,0 +1,22 @@
+{
+	"task1": {
+		"title":         "歯ブラシ買う",
+		"checked":       true,
+		"user_id":       1
+		"description":   ""
+	},
+
+	"task2": {
+		"title":         "飲み会",
+		"checked":       false,
+		"user_id":       1
+		"description":   "11/11 18:00〜渋谷で"
+	},
+
+	"task3": {
+		"title":         "歯ブラシ買う",
+		"checked":       true,
+		"user_id":       2
+		"description":   ""
+	}
+}

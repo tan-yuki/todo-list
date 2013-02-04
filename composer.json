@@ -2,6 +2,7 @@
     "require": {
         "slim/slim": "2.*",
         "j4mie/idiorm": "1.*",
-        "j4mie/paris": "1.*"
+        "j4mie/paris": "1.*",
+        "phpunit/phpunit": "3.*"
     }
 }

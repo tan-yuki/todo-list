@@ -1,0 +1,15 @@
+{
+	"user1": {
+		"id":            1,
+		"name":          "田中佑樹",
+		"account":       "tan-yuki",
+		"password":      "aaaa"
+	},
+
+	"user2": {
+		"id":            2,
+		"name":          "秋山文乃",
+		"account":       "fhoomin",
+		"password":      "bbb"
+	}
+}

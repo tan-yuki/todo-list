@@ -1,0 +1,84 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>TODO List</title>
+		<link href="./css/lib/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css">
+		<link href="./css/lib/bootstrap-responsive.min.css" media="screen" rel="stylesheet" type="text/css">
+		<link rel="stylesheet/less" type="text/css" href="./css/styles.less" />
+	</head>
+	<body>
+		<div id="container">
+			<div id="menubar" class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="brand" href="/">TODO</a>
+					</div>
+				</div>
+				<h1>TODO List</h1>
+			</div>
+			<div id="todo-contents" class="container">
+				<div id="todo-inner">
+				</div>
+			</div>
+		</div><!-- / #container -->
+		<div id="login-form" class="modal hide fade">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>Login Form</h3>
+			</div>
+			<div class="modal-body">
+					<dl>
+						<dt>ID:</dt>
+						<dd><input type="text" id="login-id"></dd>
+						<dt>Password:</dt>
+						<dd><input type="password" id="login-password"></dd>
+					</dl>
+			</div>
+			<div class="modal-footer">
+				<input type="button" value="login">
+			</div>
+		</div><!-- / #login-from -->
+		<div id="register-user" class="modal hide fade">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>Registration</h3>
+			</div>
+			<div class="modal-body">
+				<dl>
+					<dt>Enter your own ID:</dt>
+					<dd><input type="text" id="register-user-id"></dd>
+					<dt>Enter your Password:</dt>
+					<dd><input type="password" id="register-user-password"></dd>
+					<dt>Try it again:</dt>
+					<dd><input type="password" id="register-user-password-check"></dd>
+				</dl>
+			</div>
+			<div class="modal-footer">
+				<input type="button" value="Registeration">
+			</div>
+		</div><!-- / #register-user -->
+	
+		<script id="task-tmpl" type="text/x-jquery-tmpl">
+			<ul id="task-list">
+				{{each(i, task) tasks}}
+				<li class="task">
+					<div class="clearfix">
+						<div class="task-check">
+							<input type="checkbox" id="${task.id}" {{if task.checked}}checked{{/if}}>
+							<label for="${task.id}"></label>
+						</div>
+						<div class="task-contents"><input type="text" value="${task.title}" placeholder="input TODO title"></div>
+					</div>
+				</li>
+				{{/each}}
+			</ul>
+		</script>
+		<script type="text/javascript" src="./js/lib/jquery.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="./js/lib/jquery.cookie.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="./js/lib/jquery.tmpl.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="./js/lib/bootstrap.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="./js/lib/model/src/model.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="./js/todo.client.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="./js/init.js" charset="UTF-8"></script>
+	</body>
+</html>

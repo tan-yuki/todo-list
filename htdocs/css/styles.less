@@ -1,0 +1,99 @@
+@image-dark-color:   #007730;
+@image-color:        #228A4C;
+@image-bright-color: #63DB93;
+
+@checkbox-width: 48px;
+@checkbox-margin: 10px;
+
+@task-width: 400px;
+@task-list-width: @checkbox-margin + @checkbox-width + @task-width;
+@task-input-text-height: 40px;
+@task-padding: 10px;
+
+@task-background-width: @task-list-width + 150px;
+@task-background-padding: 30px;
+
+@imgurl-checkbox-unchecked: url(../img/checkbox_unchecked.png);
+@imgurl-checkbox-checked: url(../img/checkbox_checked.png);
+
+.border-radius (@radius) {
+	border-radius: @radius;
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+}
+
+
+li {
+	list-style: none;
+}
+
+.clearfix {
+	display: inline-block;
+
+	&:after {
+		content: ".";
+		display: block;
+		height: 0;
+		font-size:0;
+		clear: both;
+		visibility:hidden;
+	}
+}
+
+h1 {
+	text-align: center;
+}
+
+
+#todo-contents {
+	width: 100%;
+
+	#todo-inner {
+		.border-radius (30px);
+		background-color: @image-bright-color;
+		width: @task-background-width;
+		margin: auto;
+
+		#task-list {
+			width: @task-list-width;
+			margin: auto;
+			padding: @task-background-padding 0;
+		}
+
+		li.task {
+			padding: @task-padding 0;
+
+			div.task-check {
+				width: @checkbox-width;
+				margin-right: @checkbox-margin;
+				float: left;
+
+				input[type="checkbox"] {
+					display: none;
+
+					&+label {
+						width: @checkbox-width;
+						height: @checkbox-width;
+						display: inline-block;
+						background-image: @imgurl-checkbox-unchecked;
+					}
+
+					&:checked {
+						&+label {
+							background-image: @imgurl-checkbox-checked;
+						}
+					}
+				}
+			}
+
+			div.task-contents {
+				float: left;
+
+				input[type="text"] {
+					width: @task-width;
+					height: @task-input-text-height;
+				}
+			}
+		}
+	}
+}
