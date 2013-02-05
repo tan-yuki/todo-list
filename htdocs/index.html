@@ -34,7 +34,10 @@
 						<input type="checkbox" id="${id}" {{if checked}}checked{{/if}}>
 						<label for="${id}"></label>
 					</div>
-					<div class="task-contents"><a href="javascript:void(0);">${title}</a></div>
+					<div class="task-contents">
+						<a href="javascript:void(0);">${title}</a>
+						<input style="display:none;" type="text" val="${title}">
+					</div>
 				</div>
 			</li>
 		</script>
@@ -44,6 +47,7 @@
 		<script type="text/javascript" src="./js/lib/jquery.tmpl.min.js" charset="UTF-8"></script>
 		<script type="text/javascript" src="./js/lib/bootstrap.min.js" charset="UTF-8"></script>
 		<script type="text/javascript" src="./js/lib/model/src/model.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="./js/lib/StateMachine/src/StateMachine.js" charset="UTF-8"></script>
 		<script type="text/javascript" src="./js/todo.client.js" charset="UTF-8"></script>
 		<script type="text/javascript" src="./js/init.js" charset="UTF-8"></script>
 	</body>
