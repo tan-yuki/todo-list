@@ -1,17 +1,19 @@
-if (! this.todo) this.todo = {};
-
 /**
  * Required: todo.client
  * Required: model
  */
 (function($, __global__) {
 
-    var   client = todo.client
-        , userId = 1 //TODO: Get userId from Cookies
+    String.prototype.trim = function() {
+        return this.replace(/^ +| +$/g, '');
+    };
+
+    var   userId = 1 //TODO: Get userId from Cookies
         , Task = Model.create()
+        , updateUrl = '/api/task/save/'
         ;
 
-    Task.attribute = ['name', 'description', 'checked'];
+    Task.attributes = ['id', 'title', 'description', 'checked'];
 
     Task.extend({
         render: function() {
@@ -19,8 +21,7 @@ if (! this.todo) this.todo = {};
             // renderer
             var html = $('#task-tmpl').tmpl(this.toArray());
             $todoInner.find('ul').html(html);
-        },
-
+        }
     });
 
     var createStates = function() {
@@ -48,25 +49,40 @@ if (! this.todo) this.todo = {};
         NormalState.on('click', function(e) {
             var $this = $(this);
             $this.find('a').hide();
-            $this.find('input[type=text]').val($this.text()).show().focus();
+            $this.find('input[type=text]').val($this.text().trim()).show().focus();
             TaskStateMachine.switchTo(EditState);
         });
 
-
         // register events on EditState
-        EditState.on('switchToNormal', function(e, $this) {
+        EditState.on('finishEditing', function(e, $this) {
+            var $link = $this.prev('a'),
+                taskId = $this.parents('li.task').attr('id'),
+                task = Task.find(taskId),
+                newTitle = $this.val().trim();
+
+            // update dom element
+            $link.text(newTitle);
+
+            // update model
+            task.title = newTitle;
+            task.save();
+            task.updateRemote(updateUrl);
+
+            // change to anchor
             $this.hide();
-            $this.prev('a').show();
+            $link.show();
+
+            // change Normal state
             TaskStateMachine.switchTo(NormalState);
         });
         EditState.on('blur', function(e) {
-            EditState.fire('switchToNormal', [$(this)]);
+            EditState.fire('finishEditing', [$(this)]);
         });
 
         EditState.on('keypress', function(e) {
             var $this = $(this);
             if ($this.is(':focus') && e.which === 13) { // focus text field and press the enter key
-                EditState.fire('switchToNormal', [$this]);
+                EditState.fire('finishEditing', [$this]);
             }
         });
 

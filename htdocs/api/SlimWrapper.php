@@ -36,7 +36,7 @@ class SlimWrapper {
 		ORM::configure('password', $db_setting['db.password']);
 	}
 
-	public function success ($data) {
+	public function success ($data=array()) {
 		$this->_app->render($this->_json_view, array(
 			'status' => self::STATUS_SUCCESS,
 			'data' => $data

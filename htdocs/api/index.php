@@ -14,11 +14,11 @@ $app = $todo->getApplication();
 
 // Register to-do task API
 //
-// METHOD: POST
+// METHOD: PUT
 // @param user_id      (required)
 // @param description  (required)
 // @param title        (required)
-$app->get('/task/register/', function () use ($todo) {
+$app->put('/task/save/', function () use ($todo) {
 	$app = $todo->getApplication();
 	$req = $app->request();
 
